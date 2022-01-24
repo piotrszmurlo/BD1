@@ -1,2 +1,2 @@
 # BD1
-database project - university
+database project
