@@ -163,7 +163,7 @@ AS
         JOIN majors_courses mc ON (c.course_id = mc.course_id)
         JOIN majors m ON (mc.major_id = m.major_id)
         WHERE m.name = p_major_name
-        GROUP BY l.lecturer_id HAVING COUNT(*) != 0
+        GROUP BY l.lecturer_id HAVING COUNT(*) > 1
         ORDER BY COUNT(*) DESC;
 BEGIN
     OPEN lecturer_id_cr;
