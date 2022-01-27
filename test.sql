@@ -52,5 +52,10 @@ INSERT INTO students_courses_grades VALUES (1174, 129, 1009, 4); --nie wyrzuca b
 
 --test wyzwalacza course_shortname
 INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1234, 'Rusztowania', 4, 108);
-SELECT shortname FROM courses WHERE course_id = 1234
+SELECT shortname FROM courses WHERE course_id = 1234;
 
+--pokaz nazwy kierunkow, ich wydzialow i liczbe studentow
+SELECT m.name kierunek, f.name wydzial, count(*) liczba_studentow
+FROM students s JOIN majors m ON (m.major_id = s.major_id)
+JOIN faculties f ON (m.faculty_id = f.faculty_id)
+GROUP BY m.name, f.name ORDER BY liczba_studentow DESC;
