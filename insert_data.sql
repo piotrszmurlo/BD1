@@ -82,7 +82,7 @@ INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1022, 'Elementy
 INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1023, 'Techniki wizualizacji danych', 4, 101);
 INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1024, 'Metody optymalizacji', 4, 115);
 
--- mehcatro
+-- mechatro
 INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1025, 'Podstawy Technik Wytwarzania', 3, 103);
 INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1026, 'Miernictwo elektryczne', 4, 104);
 INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1027, 'Podstawy konstrukcji urz�dze� precyzyjnych', 5, 105);

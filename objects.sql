@@ -22,37 +22,6 @@ BEGIN
 END;
 /
 
---podnies ocene O 1 wszystkim studentom ktorzy nie zdali konkretnego przedmiotu
---CREATE OR REPLACE PROCEDURE pass_every_student(p_course_name IN courses.name%TYPE, p_faculty_name IN faculties.name%TYPE)
---AS
---    v_course_id NUMBER;
---    v_grade_id NUMBER;
---    v_new_grade_id NUMBER;
---BEGIN
---
---    SELECT c.course_id
---    INTO v_course_id
---    FROM courses c JOIN majors_courses mc on (c.course_id = mc.course_id)
---    JOIN majors m on (mc.major_id = m.major_id) JOIN faculties f on (f.faculty_id = m.faculty_id)
---    WHERE c.name = p_course_name AND p_faculty_name = f.name;
---
---    SELECT grade_id
---    INTO v_grade_id
---    FROM grades
---    WHERE grade = 2;
---    
---    SELECT grade_id
---    INTO v_new_grade_id
---    FROM grades
---    WHERE grade = 3;
---    
---    UPDATE students_courses_grades
---    SET grade_id = v_new_grade_id WHERE grade_id = v_grade_id AND course_id = v_course_id;
---    
---    dbms_output.put_line('Podniesiono oceny niezdajacym o 1');
---END;
---/
-
 --oblicz stosunek zdajacych do wszystkich uczestników przedmiotu
 CREATE OR REPLACE FUNCTION pass_ratio(p_course_name courses.name%TYPE, p_faculty_name faculties.name%TYPE)
 RETURN NUMBER
@@ -111,7 +80,7 @@ BEGIN
 END;
 
 /
---podnies ocene O 1 wszystkim studentom ktorzy nie zdali konkretnego przedmiotu
+--podnies ocene O 1 wszystkim studentom ktorzy nie zdali konkretnego przedmiotu na danym wydziale
 CREATE OR REPLACE PROCEDURE pass_every_student(p_course_name IN courses.name%TYPE, p_faculty_name IN faculties.name%TYPE)
 AS
     v_course_id NUMBER;

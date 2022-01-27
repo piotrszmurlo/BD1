@@ -19,7 +19,6 @@ group by l.lecturer_id HAVING COUNT(*) > 1
 ORDER BY COUNT(*) DESC;
 
 --wykladowcy ktorzy prowadza 1 lub 0 godzin przedmiotów
-
 SELECT l.lecturer_id lecturer_id, 0 cnt FROM lecturers l
 LEFT JOIN courses c ON (c.lecturer_id = l.lecturer_id)
 LEFT JOIN majors_courses mc ON (c.course_id = mc.course_id)
@@ -50,4 +49,8 @@ exec change_busiest_lecturers;
 INSERT INTO students_courses_grades VALUES (1144, 124, 1024, 3); --wyrzuca blad zdefiniowany w wyzwalaczu
 -- proba dodania oceny dla studenta ze statusem "aktywny"
 INSERT INTO students_courses_grades VALUES (1174, 129, 1009, 4); --nie wyrzuca bledu
+
+--test wyzwalacza course_shortname
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1234, 'Rusztowania', 4, 108);
+SELECT shortname FROM courses WHERE course_id = 1234
 
