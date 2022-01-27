@@ -175,18 +175,18 @@ AS
 BEGIN
     OPEN busy_lec_id_cr;
     OPEN lecturer_id_cr;
---    LOOP
---        EXIT WHEN lecturer_id_cr%NOTFOUND;
---        EXIT WHEN busy_lec_id_cr%NOTFOUND;
-----        FETCH lecturer_id_cr INTO v_lecturer_id;
-----        FETCH lecturer_id_cr INTO v_busy_lecturer_id;
-----        SELECT course_id
-----        INTO v_course_id
-----        FROM courses
-----        WHERE lecturer_id = v_busy_lecturer_id FETCH FIRST 1 ROW ONLY;
-----        UPDATE courses SET lecturer_id = v_lecturer_id WHERE course_id = v_course_id;
---        dbms_output.put_line('course id: ' || v_course_id || ' lecturer id: ' || v_busy_lecturer_id || ' -> ' || v_lecturer_id);
---    END LOOP;
+    LOOP
+        EXIT WHEN lecturer_id_cr%NOTFOUND;
+        EXIT WHEN busy_lec_id_cr%NOTFOUND;
+        FETCH lecturer_id_cr INTO v_lecturer_id;
+        FETCH busy_lec_id_cr INTO v_busy_lecturer_id;
+        SELECT course_id
+        INTO v_course_id
+        FROM courses
+        WHERE lecturer_id = v_busy_lecturer_id FETCH FIRST 1 ROW ONLY;
+        UPDATE courses SET lecturer_id = v_lecturer_id WHERE course_id = v_course_id;
+        dbms_output.put_line('course id: ' || v_course_id || ' lecturer id: ' || v_busy_lecturer_id || ' -> ' || v_lecturer_id);
+    END LOOP;
     CLOSE lecturer_id_cr;
     CLOSE busy_lec_id_cr;
 END;

@@ -37,7 +37,10 @@ INSERT INTO lecturers VALUES (112, 'Adam', 'Kotowski');
 INSERT INTO lecturers VALUES (113, 'Antoni', 'Ruskiewski');
 INSERT INTO lecturers VALUES (114, 'Remigiusz', 'Wierzgo�');
 INSERT INTO lecturers VALUES (115, '�ucja', 'Myszkiewicz');
+INSERT INTO lecturers VALUES (116, 'Adam', 'Kozak');
+INSERT INTO lecturers VALUES (117, 'Adam', 'Jerzyk');
 
+commit;
 
 -- ogolne
 INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1001, 'Analiza i r�wnania r�niczkowe 1', 6, 115);
@@ -354,8 +357,7 @@ INSERT INTO students_courses_grades VALUES (1139, 124, 1001, 5);
 INSERT INTO students_courses_grades VALUES (1140, 124, 1002, 5);
 INSERT INTO students_courses_grades VALUES (1141, 124, 1003, 4);
 INSERT INTO students_courses_grades VALUES (1142, 124, 1022, 4);
-INSERT INTO students_courses_grades VALUES (1143, 124, 1023, 3);
-INSERT INTO students_courses_grades VALUES (1144, 124, 1024, 3); 
+INSERT INTO students_courses_grades VALUES (1143, 124, 1023, 3); 
 
 
 -- mechatro, mechatro
@@ -396,7 +398,6 @@ INSERT INTO students_courses_grades VALUES (1170, 129, 1002, 3);
 INSERT INTO students_courses_grades VALUES (1171, 129, 1003, 4);
 INSERT INTO students_courses_grades VALUES (1172, 129, 1007, 3);
 INSERT INTO students_courses_grades VALUES (1173, 129, 1008, 3);
-INSERT INTO students_courses_grades VALUES (1174, 129, 1009, 4);
 
 INSERT INTO students_courses_grades VALUES (1175, 130, 1001, 5);
 INSERT INTO students_courses_grades VALUES (1176, 130, 1002, 4);
