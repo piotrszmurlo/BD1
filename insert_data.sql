@@ -40,70 +40,75 @@ INSERT INTO lecturers VALUES (115, '£ucja', 'Myszkiewicz');
 
 
 -- ogolne
-INSERT INTO courses VALUES (1001, 'Analiza i równania ró¿niczkowe 1', 6, 115);
-INSERT INTO courses VALUES (1002, 'Analiza i równania ró¿niczkowe 2', 4, 115);
-INSERT INTO courses VALUES (1003, 'Metody probabilistyczne i statystyka', 5, 100);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1001, 'Analiza i równania ró¿niczkowe 1', 6, 115);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1002, 'Analiza i równania ró¿niczkowe 2', 4, 115);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1003, 'Metody probabilistyczne i statystyka', 5, 100);
 
 -- infa
-INSERT INTO courses VALUES (1004, 'Architektura komputerów', 4, 100);
-INSERT INTO courses VALUES (1005, 'Bazy danych 1', 4, 107);
-INSERT INTO courses VALUES (1006, 'Bazy danych 2', 4, 106);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1004, 'Architektura komputerów', 4, 100);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1005, 'Bazy danych 1', 4, 107);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1006, 'Bazy danych 2', 4, 106);
 
 -- mechatro bio-inz
-INSERT INTO courses VALUES (1007, 'Biomateria³y', 4, 112);
-INSERT INTO courses VALUES (1008, 'Radiologia', 4, 113);
-INSERT INTO courses VALUES (1009, 'Materia³oznawstwo', 3, 114);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1007, 'Biomateria³y', 4, 112);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1008, 'Radiologia', 4, 113);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1009, 'Materia³oznawstwo', 3, 114);
 
 -- air
-INSERT INTO courses VALUES (1010, 'Sterowanie i symulacja robotów', 4, 103);
-INSERT INTO courses VALUES (1011, 'Projektowanie ukladów sterowania', 3, 114);
-INSERT INTO courses VALUES (1012, 'Systemy mikroprocesorowe w sterowaniu', 4, 115);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1010, 'Sterowanie i symulacja robotów', 4, 103);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1011, 'Projektowanie ukladów sterowania', 3, 114);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1012, 'Systemy mikroprocesorowe w sterowaniu', 4, 115);
 
 -- infa stosowana
-INSERT INTO courses VALUES (1013, 'Ochrona danych w systemach informatycznych', 3, 106);
-INSERT INTO courses VALUES (1014, 'Systemy telekomunikacyjne', 3, 107);
-INSERT INTO courses VALUES (1015, 'Grafika komputerowa', 5, 108);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1013, 'Ochrona danych w systemach informatycznych', 3, 106);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1014, 'Systemy telekomunikacyjne', 3, 107);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1015, 'Grafika komputerowa', 5, 108);
 
 -- elektrotechnika
-INSERT INTO courses VALUES (1016, 'Podstawy elektroniki', 3, 109);
-INSERT INTO courses VALUES (1017, 'Teoria obwodów 1', 4, 110);
-INSERT INTO courses VALUES (1018, 'Teoria obwodów 2', 4, 111);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1016, 'Podstawy elektroniki', 3, 109);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1017, 'Teoria obwodów 1', 4, 110);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1018, 'Teoria obwodów 2', 4, 111);
 
 -- matematyka
-INSERT INTO courses VALUES (1019, 'Pakiety matematyczne', 3, 112);
-INSERT INTO courses VALUES (1020, 'Analiza funkcjonalna', 5, 113);
-INSERT INTO courses VALUES (1021, 'Modelowanie matematyczne', 4, 115);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1019, 'Pakiety matematyczne', 3, 112);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1020, 'Analiza funkcjonalna', 5, 113);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1021, 'Modelowanie matematyczne', 4, 115);
 
 -- inz i anal dan
-INSERT INTO courses VALUES (1022, 'Elementy logiki i teorii mnogoœci', 4, 114);
-INSERT INTO courses VALUES (1023, 'Techniki wizualizacji danych', 4, 101);
-INSERT INTO courses VALUES (1024, 'Metody optymalizacji', 4, 115);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1022, 'Elementy logiki i teorii mnogoœci', 4, 114);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1023, 'Techniki wizualizacji danych', 4, 101);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1024, 'Metody optymalizacji', 4, 115);
 
 -- mehcatro
-INSERT INTO courses VALUES (1025, 'Podstawy Technik Wytwarzania', 3, 103);
-INSERT INTO courses VALUES (1026, 'Miernictwo elektryczne', 4, 104);
-INSERT INTO courses VALUES (1027, 'Podstawy konstrukcji urz¹dzeñ precyzyjnych', 5, 105);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1025, 'Podstawy Technik Wytwarzania', 3, 103);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1026, 'Miernictwo elektryczne', 4, 104);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1027, 'Podstawy konstrukcji urz¹dzeñ precyzyjnych', 5, 105);
 
 --arch
-INSERT INTO courses VALUES (1028, 'Architektura Krajobrazu', 4, 106);
-INSERT INTO courses VALUES (1029, 'Kszta³towanie detalu budowlanego', 3, 107);
-INSERT INTO courses VALUES (1030, 'Teoria urbanistyki', 4, 108);
-INSERT INTO courses VALUES (1031, 'Teoria i praktyka projektowania', 5, 110);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1028, 'Architektura Krajobrazu', 4, 106);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1029, 'Kszta³towanie detalu budowlanego', 3, 107);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1030, 'Teoria urbanistyki', 4, 108);
+INSERT INTO courses (course_id, name, ects, lecturer_id) VALUES (1031, 'Teoria i praktyka projektowania', 5, 110);
 
 commit;
 ------------------
 
+-- eiti
 INSERT INTO majors VALUES (101, 'Automatyka i Robotyka', 101);
 INSERT INTO majors VALUES (102, 'Informatyka', 101);
+
 -- ee
 INSERT INTO majors VALUES (103, 'Informatyka Stosowana,', 102);
 INSERT INTO majors VALUES (104, 'Elektrotechnika', 102);
+
 -- mini
 INSERT INTO majors VALUES (105, 'Matematyka', 104);
 INSERT INTO majors VALUES (106, 'In¿ynieria i Analiza Danych', 104);
+
 -- mchtr
 INSERT INTO majors VALUES (107, 'Mechatronika', 105);
 INSERT INTO majors VALUES (108, 'In¿ynieria Biomedyczna', 105);
+
 -- arch
 INSERT INTO majors VALUES (109, 'Architektura', 103);
 
@@ -122,7 +127,7 @@ INSERT INTO students VALUES (104, 'Bartosz', 'Pawlak', '98082219180',101, 'N');
 INSERT INTO students VALUES (105, 'Tracy', 'Hunold', '00112219105', 102, 'Y');
 INSERT INTO students VALUES (106, 'David', 'Ernst', '00112219106', 102, 'Y');
 INSERT INTO students VALUES (107, 'Nancy', 'Lorentz', '00112219109',102, 'Y');
-INSERT INTO students VALUES (108, 'Å?ukasz', 'Budka', '98082219180',102, 'N');
+INSERT INTO students VALUES (108, '£ukasz', 'Budka', '98082219180',102, 'N');
 
 -- infa stosowana, ee
 INSERT INTO students VALUES (109, 'Ismael', 'Chen', '01112219110', 103, 'Y');
@@ -354,8 +359,7 @@ INSERT INTO students_courses_grades VALUES (1139, 124, 1001, 5);
 INSERT INTO students_courses_grades VALUES (1140, 124, 1002, 5);
 INSERT INTO students_courses_grades VALUES (1141, 124, 1003, 4);
 INSERT INTO students_courses_grades VALUES (1142, 124, 1022, 4);
-INSERT INTO students_courses_grades VALUES (1143, 124, 1023, 3);
-INSERT INTO students_courses_grades VALUES (1144, 124, 1024, 3); 
+INSERT INTO students_courses_grades VALUES (1143, 124, 1023, 3); 
 
 
 -- mechatro, mechatro
@@ -396,7 +400,6 @@ INSERT INTO students_courses_grades VALUES (1170, 129, 1002, 3);
 INSERT INTO students_courses_grades VALUES (1171, 129, 1003, 4);
 INSERT INTO students_courses_grades VALUES (1172, 129, 1007, 3);
 INSERT INTO students_courses_grades VALUES (1173, 129, 1008, 3);
-INSERT INTO students_courses_grades VALUES (1174, 129, 1009, 4);
 
 INSERT INTO students_courses_grades VALUES (1175, 130, 1001, 5);
 INSERT INTO students_courses_grades VALUES (1176, 130, 1002, 4);
@@ -439,7 +442,7 @@ INSERT INTO students_courses_grades VALUES (1204, 134, 1030, 2);
 INSERT INTO students_courses_grades VALUES (1205, 135, 1001, 4);
 INSERT INTO students_courses_grades VALUES (1206, 135, 1002, 4);
 INSERT INTO students_courses_grades VALUES (1207, 135, 1003, 3);
-INSERT INTO students_courses_grades VALUES (1208, 135, 1028, 3);
+INSERT INTO students_courses_grades VALUES (1208, 135, 1028, 2);
 INSERT INTO students_courses_grades VALUES (1209, 135, 1029, 4);
 INSERT INTO students_courses_grades VALUES (1210, 135, 1030, 3);
 

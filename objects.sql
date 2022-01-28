@@ -22,38 +22,7 @@ BEGIN
 END;
 /
 
---podnies ocene O 1 wszystkim studentom ktorzy nie zdali konkretnego przedmiotu
-CREATE OR REPLACE PROCEDURE pass_every_student(p_course_name IN courses.name%TYPE, p_faculty_name IN faculties.name%TYPE)
-AS
-    v_course_id NUMBER;
-    v_grade_id NUMBER;
-    v_new_grade_id NUMBER;
-BEGIN
-
-    SELECT c.course_id
-    INTO v_course_id
-    FROM courses c JOIN majors_courses mc on (c.course_id = mc.course_id)
-    JOIN majors m on (mc.major_id = m.major_id) JOIN faculties f on (f.faculty_id = m.faculty_id)
-    WHERE c.name = p_course_name AND p_faculty_name = f.name;
-
-    SELECT grade_id
-    INTO v_grade_id
-    FROM grades
-    WHERE grade = 2;
-    
-    SELECT grade_id
-    INTO v_new_grade_id
-    FROM grades
-    WHERE grade = 3;
-    
-    UPDATE students_courses_grades
-    SET grade_id = v_new_grade_id WHERE grade_id = v_grade_id AND course_id = v_course_id;
-    
-    dbms_output.put_line('Podniesiono oceny niezdajacym o 1');
-END;
-/
-
---oblicz ile % zdawalnosci konkretnego przedmiotu
+--oblicz stosunek zdajacych do wszystkich uczestników przedmiotu
 CREATE OR REPLACE FUNCTION pass_ratio(p_course_name courses.name%TYPE, p_faculty_name faculties.name%TYPE)
 RETURN NUMBER
 AS
@@ -77,7 +46,7 @@ BEGIN
     FROM grades g JOIN students_courses_grades scg ON (g.grade_id = scg.grade_id)
     WHERE scg.course_id = v_course_id and g.grade != 2;
     
-    v_pass_ratio := 100*v_pass_ratio/v_stud_count;
+    v_pass_ratio := v_pass_ratio/v_stud_count;
     RETURN v_pass_ratio;
 END;
 /
@@ -110,8 +79,8 @@ BEGIN
     RETURN v_course_count/v_stud_count;
 END;
 
-
---podnies ocene O 1 wszystkim studentom ktorzy nie zdali konkretnego przedmiotu
+/
+--podnies ocene O 1 wszystkim studentom ktorzy nie zdali konkretnego przedmiotu na danym wydziale
 CREATE OR REPLACE PROCEDURE pass_every_student(p_course_name IN courses.name%TYPE, p_faculty_name IN faculties.name%TYPE)
 AS
     v_course_id NUMBER;
@@ -142,36 +111,44 @@ BEGIN
 END;
 /
 
---zmien wykladowcow na danym kierunku tak, aby ci co prowadza najmniej przedmiotow prowadzili wyklady zamiast tych, ktorzy prowadza najwiecej przedmiotow
-CREATE OR REPLACE PROCEDURE change_busiest_lecturers(p_major_name IN majors.name%TYPE)
+--zmien wykladowcow na danym kierunku tak, aby ci co prowadza 0 lub 1 przedmiot prowadzili wyklady zamiast tych, ktorzy prowadza najwiecej przedmiotow
+CREATE OR REPLACE PROCEDURE change_busiest_lecturers
 AS
     v_course_id NUMBER;
     v_lecturer_id NUMBER;
     v_busy_lecturer_id NUMBER;
     
     CURSOR lecturer_id_cr IS
-        SELECT l.lecturer_id FROM lecturers l
+        SELECT lecturer_id FROM (
+        SELECT l.lecturer_id lecturer_id, 0 cnt FROM lecturers l
         LEFT JOIN courses c ON (c.lecturer_id = l.lecturer_id)
+        LEFT JOIN majors_courses mc ON (c.course_id = mc.course_id)
+        LEFT JOIN majors m ON (mc.major_id = m.major_id)
+        WHERE c.course_id IS NULL
+        group by l.lecturer_id
+        UNION
+        SELECT l.lecturer_id, count(*) cnt FROM lecturers l
+        JOIN courses c ON (c.lecturer_id = l.lecturer_id)
         JOIN majors_courses mc ON (c.course_id = mc.course_id)
         JOIN majors m ON (mc.major_id = m.major_id)
-        WHERE m.name = p_major_name
-        GROUP BY l.lecturer_id HAVING COUNT(*) = 0;
+        GROUP BY l.lecturer_id HAVING count(*) < 2
+        ORDER BY cnt ASC);
 
     CURSOR busy_lec_id_cr IS
         SELECT l.lecturer_id FROM lecturers l
         JOIN courses c ON (c.lecturer_id = l.lecturer_id)
         JOIN majors_courses mc ON (c.course_id = mc.course_id)
         JOIN majors m ON (mc.major_id = m.major_id)
-        WHERE m.name = p_major_name
-        GROUP BY l.lecturer_id HAVING COUNT(*) > 1
+        group by l.lecturer_id HAVING COUNT(*) > 1
         ORDER BY COUNT(*) DESC;
 BEGIN
+    OPEN busy_lec_id_cr;
     OPEN lecturer_id_cr;
     LOOP
         EXIT WHEN lecturer_id_cr%NOTFOUND;
         EXIT WHEN busy_lec_id_cr%NOTFOUND;
         FETCH lecturer_id_cr INTO v_lecturer_id;
-        FETCH lecturer_id_cr INTO v_busy_lecturer_id;
+        FETCH busy_lec_id_cr INTO v_busy_lecturer_id;
         SELECT course_id
         INTO v_course_id
         FROM courses
@@ -180,5 +157,6 @@ BEGIN
         dbms_output.put_line('course id: ' || v_course_id || ' lecturer id: ' || v_busy_lecturer_id || ' -> ' || v_lecturer_id);
     END LOOP;
     CLOSE lecturer_id_cr;
+    CLOSE busy_lec_id_cr;
 END;
 /
